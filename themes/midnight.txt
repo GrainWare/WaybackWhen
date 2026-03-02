@@ -1,4 +1,3 @@
 Theme: midnight
 
-This is the description for the midnight theme.
-You can edit this file to add your own content.
+It was a dark and stormy night... Has traces of purple tone and has a distinct vibe to make you feel cozy.
