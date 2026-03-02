@@ -1,0 +1,4 @@
+Theme: sage
+
+This is the description for the sage theme.
+You can edit this file to add your own content.

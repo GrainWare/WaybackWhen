@@ -1,0 +1,4 @@
+Theme: ice
+
+This is the description for the ice theme.
+You can edit this file to add your own content.

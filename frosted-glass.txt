@@ -1,0 +1,4 @@
+Theme: frosted-glass
+
+This is the description for the frosted-glass theme.
+You can edit this file to add your own content.

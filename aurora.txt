@@ -1,0 +1,4 @@
+Theme: aurora
+
+This is the description for the aurora theme.
+You can edit this file to add your own content.

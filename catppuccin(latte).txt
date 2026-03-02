@@ -1,0 +1,4 @@
+Theme: catppuccin(latte)
+
+This is the description for the catppuccin(latte) theme.
+You can edit this file to add your own content.

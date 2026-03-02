@@ -1,0 +1,4 @@
+Theme: space
+
+This is the description for the space theme.
+You can edit this file to add your own content.

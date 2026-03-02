@@ -1,0 +1,4 @@
+Theme: purple
+
+This is the description for the purple theme.
+You can edit this file to add your own content.

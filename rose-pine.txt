@@ -1,0 +1,4 @@
+Theme: rose-pine
+
+This is the description for the rose-pine theme.
+You can edit this file to add your own content.

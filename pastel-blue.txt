@@ -1,0 +1,4 @@
+Theme: pastel-blue
+
+This is the description for the pastel-blue theme.
+You can edit this file to add your own content.

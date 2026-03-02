@@ -1,0 +1,4 @@
+Theme: charcoal
+
+This is the description for the charcoal theme.
+You can edit this file to add your own content.
