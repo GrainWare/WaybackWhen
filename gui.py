@@ -7,7 +7,7 @@ from pathlib import Path
 from collections import deque
 from PyQt6.QtCore import QTimer, Qt, pyqtSignal, QObject, QSize
 from PyQt6.QtWidgets import *
-from PyQt6.QtGui import QPalette, QColor, QAction, QFont, QIcon, QPixmap
+from PyQt6.QtGui import QPalette, QColor, QAction, QFont, QIcon, QPixmap, QPainter
 from urllib.parse import urlparse
 from WaybackWhen import SETTINGS, CrawlCoordinator, log_message
 
@@ -37,7 +37,6 @@ def load_settings():
         log_message("ERROR", f"Failed to load settings: {str(e)}", debug_only=False)
         SETTINGS["theme"] = "dark"
         save_settings()
-
 
 class TextManager:
     def __init__(self):
@@ -83,6 +82,7 @@ class TextManager:
             "text_editor_action": "  &Change Languages",
             "url_placeholder": "Enter URL (e.g., example.com)",
             "proxy_label": "Proxies (one per line):",
+            "proxy_placeholder": "Enter proxies here...",
             "archiving_progress_label": "Archiving Progress:",
             "stats_format": "Status: {status} | Archived: {archived} | Skipped: {skipped} | Failed: {failed} | Total: {total}",
             "no_urls_warning": "No URLs to process",
@@ -133,7 +133,6 @@ class TextManager:
         SETTINGS["language"] = language_name
         save_settings()
         self.load_current_text()
-
 
 class SettingsDialog(QDialog):
     def __init__(self, parent=None):
@@ -195,7 +194,6 @@ class SettingsDialog(QDialog):
         save_settings()
         self.accept()
 
-
 class ClickableLabel(QLabel):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -210,7 +208,6 @@ class ClickableLabel(QLabel):
     def open_preview_window(self):
         if self.theme_name and self.dialog:
             self.dialog.show_theme_preview(self.theme_name)
-
 
 class ThemeMarketDialog(QDialog):
     def __init__(self, theme_manager, current_theme, parent=None):
@@ -402,7 +399,6 @@ class ThemeMarketDialog(QDialog):
         button_layout.addStretch()
         layout.addLayout(button_layout)
         
-        
         return widget
 
     def show_theme_preview(self, theme_name):
@@ -464,11 +460,6 @@ class ThemeMarketDialog(QDialog):
         if self.current_preview_theme:
             self.apply_theme(self.current_preview_theme)
 
-    def apply_theme(self, theme_name):
-        self.parent_gui.set_theme(theme_name)
-        self.current_theme = theme_name
-        self.populate_themes()
-
     def get_theme_image_path(self, theme_name):
         image_extensions = ['.png', '.jpg', '.jpeg', '.bmp']
         for ext in image_extensions:
@@ -477,6 +468,10 @@ class ThemeMarketDialog(QDialog):
                 return path
         return None
 
+    def apply_theme(self, theme_name):
+        #capture screenshot
+        self.accept()
+        self.parent_gui.set_theme_and_capture(theme_name)
 
 class ThemeManager:
     def __init__(self):
@@ -500,12 +495,10 @@ class ThemeManager:
         except Exception as e:
             log_message("ERROR", f"Theme load failed: {e}", False)
 
-
 class StatusUpdater(QObject):
     update_status = pyqtSignal(str, str, str, str, str)
     update_crawling = pyqtSignal(list)
     update_archiving = pyqtSignal(list)
-
 
 class CrawlerGUI(QWidget):
     def __init__(self):
@@ -527,9 +520,53 @@ class CrawlerGUI(QWidget):
         self.init_ui()
         self.apply_theme()
 
+    def get_theme_image_path(self, theme_name):
+        return THEMES_DIR / f"{theme_name}.png"
+
+    def set_theme_and_capture(self, theme_name):
+        self.current_theme = theme_name
+        SETTINGS["theme"] = theme_name
+        save_settings()
+        
+        # Apply the theme first
+        self.apply_theme()
+        
+        # Check if we need to generate a preview image for this theme
+        image_path = self.get_theme_image_path(theme_name)
+        if not image_path.exists():
+            QTimer.singleShot(1000, lambda: self.capture_main_window_screenshot(theme_name))
+
+    def capture_main_window_screenshot(self, theme_name):
+        try:
+            # Ensure the window is properly shown
+            self.show()
+            self.raise_()
+            QApplication.processEvents()
+            
+            # Create screenshot of just the main window
+            screenshot = self.grab() 
+            
+            # Resize to reasonable dimensions while maintaining aspect ratio
+            scaled = screenshot.scaled(
+                800, 600,
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation
+            )
+            
+            # Ensure themes directory exists
+            THEMES_DIR.mkdir(exist_ok=True)
+            
+            # Save to file
+            image_path = self.get_theme_image_path(theme_name)
+            scaled.save(str(image_path), "PNG")
+            log_message("INFO", f"Saved main window screenshot to {image_path}", debug_only=True)
+            
+        except Exception as e:
+            log_message("ERROR", f"Failed to capture main window screenshot: {str(e)}", debug_only=False)
+
     def init_ui(self):
         self.setWindowTitle(self.text_manager.get_text("window_title"))
-        self.resize(1200, 1200)
+        self.resize(1000, 1000)
         self.setObjectName("main_window")
         
         main_layout = QVBoxLayout(self)
@@ -703,12 +740,6 @@ class CrawlerGUI(QWidget):
             action.triggered.connect(lambda checked, t=text: self.set_language(t))
         menu.exec(self.toolbar.widgetForAction(self.languages_action).mapToGlobal(
             self.toolbar.widgetForAction(self.languages_action).rect().bottomLeft()))
-
-    def set_theme(self, theme_name):
-        self.current_theme = theme_name
-        SETTINGS["theme"] = theme_name
-        save_settings()
-        self.apply_theme()
 
     def set_language(self, language_name):
         self.text_manager.set_language(language_name)
@@ -949,7 +980,6 @@ class CrawlerGUI(QWidget):
         self.resume_btn.setEnabled(self.is_running and self.is_paused)
         self.stop_btn.setEnabled(self.is_running)
 
-
 def main():
     load_settings()
     app = QApplication(sys.argv)
@@ -957,7 +987,6 @@ def main():
     gui = CrawlerGUI()
     gui.show()
     sys.exit(app.exec())
-
 
 if __name__ == "__main__":
     main()
