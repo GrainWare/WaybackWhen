@@ -1,4 +1,3 @@
 Theme: ocean
 
-This is the description for the ocean theme.
-You can edit this file to add your own content.
+The Ocean. Calm, Enormous, Intimidating. The perfect blue toned theme.
