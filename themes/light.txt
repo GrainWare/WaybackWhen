@@ -1,4 +1,3 @@
 Theme: light
 
-This is the description for the light theme.
-You can edit this file to add your own content.
+The average Joes light mode theme... Use this if you use Windows /jk
