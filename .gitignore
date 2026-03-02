@@ -1,5 +1,5 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/.vs
+﻿/.vs
+/.venv
+**/__pycache__
+settings.txt
+settings.json
