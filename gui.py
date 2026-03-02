@@ -11,7 +11,7 @@ from PyQt6.QtGui import QPalette, QColor, QAction, QFont, QIcon, QPixmap, QPaint
 from urllib.parse import urlparse
 from WaybackWhen import SETTINGS, CrawlCoordinator, log_message
 
-SETTINGS_FILE = "settings.txt"
+SETTINGS_FILE = "settings.json"
 THEMES_DIR = Path("themes")
 TEXTS_DIR = Path("texts")
 

@@ -39,7 +39,7 @@ except ImportError:
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
-SETTINGS_FILE = "settings.txt"
+SETTINGS_FILE = "settings.json"
 
 def load_settings():
     """Load settings from file if it exists."""
