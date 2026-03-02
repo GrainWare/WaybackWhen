@@ -1,4 +1,4 @@
 Theme: sage
 
-This is the description for the sage theme.
-You can edit this file to add your own content.
+Light mode version of the green themes... Looks very calm and composed just like the name :D
+Has hints of green tones.
