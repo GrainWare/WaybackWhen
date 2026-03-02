@@ -1,4 +1,3 @@
 Theme: ice
 
-This is the description for the ice theme.
-You can edit this file to add your own content.
+Very white theme. Has blue tones too. Looks insanely bright and teleports you to Frozen...

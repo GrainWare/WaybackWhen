@@ -1,4 +1,3 @@
 Theme: peach
 
-This is the description for the peach theme.
-You can edit this file to add your own content.
+The light mode version of the orange theme... Looks very fruity.

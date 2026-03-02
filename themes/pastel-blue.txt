@@ -1,4 +1,3 @@
 Theme: pastel-blue
 
-This is the description for the pastel-blue theme.
-You can edit this file to add your own content.
+Light mode theme which gives slight hints to the blue tone. You may call it a sibling of the Ice theme...

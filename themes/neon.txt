@@ -1,4 +1,3 @@
 Theme: neon
 
-This is the description for the neon theme.
-You can edit this file to add your own content.
+Cool colourful theme. Looks straight out of an asian street... has blue, green and violet tones.

@@ -1,4 +1,3 @@
 Theme: green
 
-This is the description for the green theme.
-You can edit this file to add your own content.
+Vegetable Green toned theme. Looks like a healthy spinach or brocolli lol...

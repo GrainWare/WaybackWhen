@@ -1,4 +1,3 @@
 Theme: charcoal
 
-This is the description for the charcoal theme.
-You can edit this file to add your own content.
+Organic grey-ish theme. Slightly green toned. Almost as if it is at the middle of dark and light but inclined more towards dark... omg politics...

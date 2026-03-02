@@ -1,4 +1,3 @@
 Theme: vapourwave
 
-This is the description for the vapourwave theme.
-You can edit this file to add your own content.
+Colourful 90s neon like theme. Is mainly blue with green tones... gives very retro vibes.

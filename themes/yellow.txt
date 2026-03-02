@@ -1,4 +1,3 @@
 Theme: yellow
 
-This is the description for the yellow theme.
-You can edit this file to add your own content.
+Light yellowish toned theme. Has very distinct and cute looking vibe to it.

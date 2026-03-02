@@ -1,4 +1,4 @@
 Theme: cyberpunk
 
-This is the description for the cyberpunk theme.
-You can edit this file to add your own content.
+Welcome to Night City! This theme takes you right in the future to 2077! Very Sci-Fi focused theme...
+Uses reddish-pink, green and purple tones.
