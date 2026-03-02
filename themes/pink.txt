@@ -1,4 +1,3 @@
 Theme: pink
 
-This is the description for the pink theme.
-You can edit this file to add your own content.
+Dark wine toned theme... very classy. Perfect to feel like a... queen?
