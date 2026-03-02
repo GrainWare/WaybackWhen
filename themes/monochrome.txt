@@ -1,4 +1,3 @@
 Theme: monochrome
 
-This is the description for the monochrome theme.
-You can edit this file to add your own content.
+Pure black theme, perfect for OLED screens! The optimal theme for night owls... or if you are in a dark room.
