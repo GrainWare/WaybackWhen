@@ -1,4 +1,0 @@
-Theme: light
-
-This is the description for the light theme.
-You can edit this file to add your own content.
