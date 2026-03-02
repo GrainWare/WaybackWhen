@@ -4,10 +4,14 @@ import json
 import importlib
 import csv
 from pathlib import Path
-from collections import deque
 from PyQt6.QtCore import QTimer, Qt, pyqtSignal, QObject, QSize
-from PyQt6.QtWidgets import *
-from PyQt6.QtGui import QPalette, QColor, QAction, QFont, QIcon, QPixmap, QPainter
+from PyQt6.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
+    QLineEdit, QTextEdit, QListWidget, QProgressBar, QComboBox, QGroupBox,
+    QDialog, QDialogButtonBox, QScrollArea, QGridLayout, QStackedWidget, QToolBar,
+    QMenu, QCheckBox, QSpinBox, QListWidgetItem, QStyleFactory
+)
+from PyQt6.QtGui import QColor, QAction, QFont, QPixmap
 from urllib.parse import urlparse
 from WaybackWhen import SETTINGS, CrawlCoordinator, log_message
 

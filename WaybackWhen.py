@@ -1,7 +1,5 @@
 import asyncio
-import aiohttp
 import requests
-import concurrent
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from urllib.parse import (
     urljoin,
@@ -10,7 +8,7 @@ from urllib.parse import (
     urlencode,
     urlunparse,
 )
-from collections import OrderedDict, deque
+from collections import deque
 import waybackpy
 from datetime import datetime, timedelta, timezone
 import time
