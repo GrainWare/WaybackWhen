@@ -1,4 +1,3 @@
 Theme: aurora
 
-This is the description for the aurora theme.
-You can edit this file to add your own content.
+Dark jungle green theme. Makes me feel like i am Bear Grylls in the amazon rainforest and an anaconda is about to eat me...
